@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>見積依頼フォーム</title>
+</head>
+<body>
+
+<h1>見積依頼</h1>
+
+顧客ID:<br>
+<input id="customer"><br><br>
+
+作業:<br>
+<select id="work">
+<option value="door">ドア修理</option>
+<option value="floor">床修理</option>
+</select><br><br>
+
+<button onclick="gen()">JSON生成</button>
+
+<pre id="out"></pre>
+
+<script>
+function gen(){
+  const data = {
+    customer: document.getElementById("customer").value,
+    work: document.getElementById("work").value,
+    level: "normal",
+    area: "okayama",
+    urgent: 1,
+    photo: 1
+  };
+
+  const text = JSON.stringify(data, null, 2);
+  document.getElementById("out").textContent = text;
+}
+</script>
+
+</body>
+</html>
